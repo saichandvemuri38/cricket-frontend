@@ -1,0 +1,30 @@
+<!-- <p>login works!</p> -->
+<div class="p-5" id="myTestDiv" #myTestDiv>
+  <form class="text-center d-flex justify-content-center" [formGroup]="login_form">
+    <p-card header="SignIn" [style]="{ width: '360px' }">
+      <div class="">
+        <span class="p-float-label">
+          <input pInputText id="username" class="w-100" formControlName="email" />
+          <label htmlFor="username">Username</label>
+        </span>
+      </div>
+      <div class="mt-4">
+        <span class="p-float-label">
+          <p-password styleClass="w-100" [feedback]="false" class="w-100" formControlName="password" [toggleMask]="true"></p-password>
+          <label for="password">Password</label>
+        </span>
+      </div>
+      <div class="mt-4">
+        <p-button label="Submit" (click)="submit()"></p-button>
+      </div>
+    </p-card>
+  </form>
+</div>
+<!-- <pdf-viewer [src]="pdfSrc"
+[render-text]="true"
+[original-size]="false"
+style="width: 400px; height: 500px"
+></pdf-viewer> -->
+
+
+
