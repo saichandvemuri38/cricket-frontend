@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,19 +23,10 @@ export class HomeComponent implements OnInit {
   public wideBall = true;
   public wideReBall = true;
   public wideBallrun = 1;
-  constructor(public fb: FormBuilder) { }
+
+  constructor(public fb: FormBuilder,public router:Router) { }
+
   ngOnInit(): void {
-    this.createForm();
-  }
-  public createForm() {
-    let obj = {
-      team1: this.team1,
-      team2: this.team2,
-      optedTo: this.optedTo,
-      toss: this.toss,
-      overs: this.overs,
-    }
-    console.log(JSON.stringify(obj));
   }
   public submit() {
     let obj = {
@@ -58,6 +50,7 @@ export class HomeComponent implements OnInit {
       }
     }
     console.log(obj);
+    this.router.navigateByUrl('add-player');
   }
   public advanceObject;
   public advancedSubmit() {

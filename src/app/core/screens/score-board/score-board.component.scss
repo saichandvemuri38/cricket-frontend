@@ -1,0 +1,24 @@
+th {
+  font-weight: 500;
+  padding: 5px;
+  font-size: 14px;
+}
+
+td {
+  border-bottom: 0;
+  padding: 5px;
+}
+
+li {
+
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -9,8 +9,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { CheckboxModule } from 'primeng/checkbox';
 
-const primeNg = [CardModule, InputTextModule, PasswordModule, ButtonModule, RadioButtonModule, InputNumberModule, TooltipModule, DialogModule, InputSwitchModule];
+const primeNg = [CheckboxModule,CardModule, InputTextModule, PasswordModule, ButtonModule, RadioButtonModule, InputNumberModule, TooltipModule, DialogModule, InputSwitchModule];
 
 @NgModule({
   declarations: [],

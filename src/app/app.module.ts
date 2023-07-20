@@ -12,7 +12,7 @@ import { ViewSDKClientService } from './services/view-sdkclient.service';
 @NgModule({
   declarations: [
     AppComponent,
-    myRoutings,
+    myRoutings
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<!-- <p>add-player works!</p> -->
+<div class="p-5" >
+  <div class="text-center d-flex justify-content-center">
+    <p-card header="Add Player Details" [style]="{ width: '360px' }">
+      <div class="">
+        <span class="p-float-label">
+          <input pInputText id="Team1" [(ngModel)]="batsman1" />
+          <label htmlFor="batsman1">Batsman 1</label>
+        </span>
+      </div>
+      <div class="mt-4">
+        <span class="p-float-label">
+          <input pInputText id="batsman2" [(ngModel)]="batsman2" />
+          <label htmlFor="batsman2">Batsman 2</label>
+        </span>
+      </div>
+      <div class="mt-4">
+        <span class="p-float-label">
+          <input pInputText id="Team2" [(ngModel)]="bowler" />
+          <label htmlFor="Team2">Bowler</label>
+        </span>
+      </div>
+      <div class="mt-3 d-flex align-items-center justify-content-center">
+        <p-button label="Submit" (click)="submit()"></p-button>
+      </div>
+    </p-card>
+  </div>
+</div>
