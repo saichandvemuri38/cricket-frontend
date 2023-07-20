@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   public wideBall = true;
   public wideReBall = true;
   public wideBallrun = 1;
-
   constructor(public fb: FormBuilder) { }
   ngOnInit(): void {
     this.createForm();
