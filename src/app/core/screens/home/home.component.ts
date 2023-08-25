@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-home',
@@ -24,33 +25,38 @@ export class HomeComponent implements OnInit {
   public wideReBall = true;
   public wideBallrun = 1;
 
-  constructor(public fb: FormBuilder,public router:Router) { }
+  constructor(public fb: FormBuilder, public router: Router, public apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.advanceObject = {
+      playersPerTeam: this.playersPerTeam,
+      noball: {
+        noBall: this.noBall,
+        noballreBall: this.noballreBall,
+        noBallrun: this.noBallrun
+      },
+      wideball: {
+        wideBall: this.wideBall,
+        wideReBall: this.wideBall,
+        wideBallrun: this.wideBallrun
+      }
+    }
   }
   public submit() {
-    let obj = {
+    let obj = [{
       team1: this.team1,
       team2: this.team2,
       optedTo: this.optedTo,
       toss: this.toss,
       overs: this.overs,
-      advanceSettings: {
-        playersPerTeam: this.playersPerTeam,
-        noball: {
-          noBall: this.noBall,
-          noballreBall: this.noballreBall,
-          noBallrun: this.noBallrun
-        },
-        wideball: {
-          wideBall: this.wideBall,
-          wideReBall: this.wideBall,
-          wideBallrun: this.wideBallrun
-        }
-      }
-    }
-    console.log(obj);
-    this.router.navigateByUrl('add-player');
+      advanceSettings: this.advanceObject
+    }]
+    // console.log(obj);
+    // this.router.navigateByUrl('add-player');
+    this.apiService.createTeams(obj).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['add-player'], { queryParams:{item_id:res._id}});
+    })
   }
   public advanceObject;
   public advancedSubmit() {
