@@ -5,18 +5,18 @@
       <div class="shadow-sm p-2">
         <div class="d-flex align-items-center justify-content-between">
           <div class="">
-            <h4 class="mb-1">{{records['_id']  }} 1st inning</h4>
+            <h4 class="mb-1">{{(records.teams[0].optedTo == "Bat" && records.teams[0].toss == "Team 1" ? records.teams[0].team1 : records.teams[0].team2) | uppercase}} 1st inning</h4>
             <div class="d-flex align-items-center">
-              <h1 class="mb-0">19</h1>
+              <h1 class="mb-0">0</h1>
               <h1 class="mb-0"> &nbsp;-&nbsp; </h1>
-              <h1 class="mb-0">5</h1>
-              <h3 class="mb-0">&nbsp;(1.0)</h3>
+              <h1 class="mb-0">0</h1>
+              <h3 class="mb-0">&nbsp;({{round(ballRecords?.overs?.length/6)}}.{{(ballRecords?.overs?.length%6)}})</h3>
             </div>
           </div>
           <div class="">
             <h4 class="mb-1">CRR</h4>
             <div class="d-flex align-items-center">
-              <h2 class="mb-0">10</h2>
+              <h2 class="mb-0">0</h2>
             </div>
           </div>
         </div>
@@ -36,20 +36,20 @@
             </thead>
             <tbody>
               <tr>
-                <td>test*</td>
-                <td>13</td>
-                <td>4</td>
+                <td>{{records.player_record[0].batsman1}}</td>
                 <td>0</td>
                 <td>0</td>
-                <td>325.2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
               <tr>
-                <td>test</td>
-                <td>13</td>
-                <td>4</td>
+                <td>{{records.player_record[0].batsman2}}</td>
                 <td>0</td>
                 <td>0</td>
-                <td>325.2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
             </tbody>
           </table>
@@ -66,12 +66,12 @@
             </thead>
             <tbody>
               <tr>
-                <td>test</td>
-                <td>13</td>
-                <td>4</td>
+                <td>{{records.player_record[0].bowler}}</td>
                 <td>0</td>
                 <td>0</td>
-                <td>325.2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
             </tbody>
           </table>
@@ -80,38 +80,33 @@
       <div class="shadow-sm p-2 mt-2">
         <div class="d-flex align-items-center w-100">
           <h5 class="mb-0" style="font-weight: 500;">This Over:</h5>
-          <ul class="p-0 m-0 nav">
-            <li class="border shadow-sm p-2  mx-1"> 1</li>
-            <li class="border shadow-sm p-2  mx-1"> 1</li>
-            <li class="border shadow-sm p-2  mx-1"> 4</li>
-            <li class="border shadow-sm p-2  mx-1"> 1</li>
-            <li class="border shadow-sm p-2  mx-1"> 1</li>
-            <li class="border shadow-sm p-2  mx-1"> 4</li>
-            <li class="border shadow-sm p-2  mx-1"> 1</li>
-            <li class="border shadow-sm p-2  mx-1"> 4</li>
+          <ul class="p-0 m-0 nav" *ngFor="let item of ballRecords?.overs">
+            <li class="border shadow-sm p-2  mx-1"> {{item.runs}}</li>
+
           </ul>
         </div>
       </div>
       <div class="shadow-sm  mt-2">
         <div class="nav">
           <div class="d-flex align-items-center m-2">
-            <p-checkbox value="Wide" inputId="ny"></p-checkbox>
+            <p-checkbox value="Wide" inputId="ny" (onChange)="extras('wide')"
+            [(ngModel)]="extraRecords"></p-checkbox>
             <label for="ny" class="ms-2">Wide</label>
           </div>
           <div class="d-flex align-items-center m-2">
-            <p-checkbox value="No Ball" inputId="ny"></p-checkbox>
+            <p-checkbox value="No Ball" [(ngModel)]="extraRecords" inputId="ny" (onChange)="extras('noBall')"></p-checkbox>
             <label for="ny" class="ms-2">No Ball</label>
           </div>
           <div class="d-flex align-items-center m-2">
-            <p-checkbox value="Byes" inputId="ny"></p-checkbox>
+            <p-checkbox value="Byes" [(ngModel)]="extraRecords" inputId="ny" (onChange)="extras('byes')"></p-checkbox>
             <label for="ny" class="ms-2">Byes</label>
           </div>
           <div class="d-flex align-items-center m-2">
-            <p-checkbox value="Leg Byes" inputId="ny"></p-checkbox>
+            <p-checkbox value="Leg Byes" [(ngModel)]="extraRecords" inputId="ny" (onChange)="extras('legBye')"></p-checkbox>
             <label for="ny" class="ms-2">Leg Byes</label>
           </div>
           <div class="d-flex align-items-center m-2">
-            <p-checkbox value="Wicket" inputId="ny"></p-checkbox>
+            <p-checkbox value="Wicket" [(ngModel)]="extraRecords" inputId="ny" (onChange)="extras('wicket')"></p-checkbox>
             <label for="ny" class="ms-2">Wicket</label>
           </div>
           <p-button label="Retire"  styleClass="p-button-sm" class="m-2"></p-button>
@@ -126,15 +121,15 @@
           <p-button label="Extras"  styleClass="p-button-sm my-2 w-100" ></p-button>
         </div>
         <div class="shadow-sm p-2 ms-2">
-          <ul class="p-0 m-0 nav">
-            <li class="border shadow-sm p-2  m-2"> 1</li>
-            <li class="border shadow-sm p-2  m-2"> 1</li>
-            <li class="border shadow-sm p-2  m-2"> 4</li>
-            <li class="border shadow-sm p-2  m-2"> 1</li>
-            <li class="border shadow-sm p-2  m-2"> 1</li>
-            <li class="border shadow-sm p-2  m-2"> 4</li>
-            <li class="border shadow-sm p-2  m-2"> 1</li>
-            <li class="border shadow-sm p-2  m-2"> ~</li>
+          <ul class="p-0 m-0 nav" >
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(0)"> 0</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(1)"> 1</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(2)"> 2</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(3)"> 3</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(4)"> 4</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(5)"> 5</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(6)"> 6</li>
+            <li class="border shadow-sm p-2  m-2" (click)="ballValue(7)"> ~</li>
           </ul>
         </div>
       </div>

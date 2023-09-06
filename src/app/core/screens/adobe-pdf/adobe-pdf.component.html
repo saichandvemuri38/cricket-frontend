@@ -1,1 +1,10 @@
-<p>adobe-pdf works!</p>
+
+<div class="">
+  <div class="" *ngFor="let item of output">
+    <p>{{item.handle}}:{{item.message}}</p>
+  </div>
+  <div class="">{{feedback}}</div>
+  <input type="text" [(ngModel)]="userName">
+  <input type="text" [(ngModel)]="message" placeholder="message" (keypress)="messageTyping()">
+  <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+</div>

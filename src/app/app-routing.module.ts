@@ -12,7 +12,8 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'adobe',component:AdobePdfComponent},
   {path:'add-player',component:AddPlayerComponent},
-  {path:'score-board',component:ScoreBoardComponent}
+  {path:'score-board',component:ScoreBoardComponent},
+  {path:'adobe',component:AdobePdfComponent}
 ];
 
 @NgModule({
